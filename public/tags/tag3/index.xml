@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tag3 on My New Hugo Site</title>
+    <link>http://localhost:1313/tags/tag3/</link>
+    <description>Recent content in Tag3 on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 06 Oct 2025 15:27:28 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/tag3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>B</title>
+      <link>http://localhost:1313/b/</link>
+      <pubDate>Mon, 06 Oct 2025 15:27:28 +0200</pubDate>
+      <guid>http://localhost:1313/b/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
