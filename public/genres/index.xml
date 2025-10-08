@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Genres on My New Hugo Site</title>
+    <link>http://localhost:1313/genres/</link>
+    <description>Recent content in Genres on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/genres/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hip Hop</title>
+      <link>http://localhost:1313/genres/hip-hop/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/genres/hip-hop/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pop</title>
+      <link>http://localhost:1313/genres/pop/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/genres/pop/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

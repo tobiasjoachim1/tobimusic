@@ -2,13 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/</loc>
+  </url><url>
+    <loc>http://localhost:1313/categories/apple/</loc>
+  </url><url>
     <loc>http://localhost:1313/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/genres/</loc>
+  </url><url>
+    <loc>http://localhost:1313/genres/hip-hop/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/hip-hop/</loc>
   </url><url>
     <loc>http://localhost:1313/song1/</loc>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>http://localhost:1313/genres/pop/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/pop/</loc>
   </url><url>

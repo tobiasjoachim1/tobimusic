@@ -1,0 +1,16 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <title></title>
+  </head>
+  <body>
+    <!-- Hugo function -->
+    {{.Content}}
+    {{ range .Pages }}
+      <ul>
+        <li><a href="{{ .RelPermalink }}">{{.Title}}</a> </li>
+      </ul>
+    {{ end }}
+  </body>
+</html>
