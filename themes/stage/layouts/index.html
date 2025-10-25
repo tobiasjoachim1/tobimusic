@@ -1,0 +1,140 @@
+{{ partial "head.html" . }}
+{{ partial "navbar.html" . }}
+
+<div class="wrapper">
+
+  <!-- Section 1: Hero -->
+  <section id="hero" class="hero-section">
+    <div class="hero-overlay">
+      <div class="container hero-content">
+        <h1>Tobias Joachim</h1>
+        <h3>{{ i18n "hero_subtitle" }}</h3>
+        <p>{{ i18n "hero_catch_phrase" }}</p>
+        <a href="/getstarted/" class="btn-getstarted hero-btn">{{ i18n "hero_button" }}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: About Me -->
+  <section id="about" class="about-section">
+    <div class="container about-content">
+
+    <div class="about-content">
+      <div class="about-image">
+        <img src="/images/portrait.jpg" alt="Tobias Joachim Portrait">
+      </div>
+      <div class="about-text">
+        <p>{{ i18n "about_text_1" }}</p>
+        <p>{{ i18n "about_text_2" }}</p>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Portfolio / Songs -->
+  <section id="portfolio" class="portfolio-section">
+    <div class="container">
+      <h2 class="section-title">{{ i18n "portfolio_title" }}</h2>
+
+      <ul class="song-list">
+        {{ range .Site.Data.songs }}
+          <li>{{ partial "song-item.html" . }}</li>
+        {{ end }}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section 4: Process -->
+  <section id="process" class="process-section">
+    <div class="container">
+      <h2 class="section-title">Turning Your Ideas into Release-Ready Songs</h2>
+
+      <!-- Step 1 -->
+      <div class="process-step">
+        <div class="step-header">
+          <!-- logo -->
+          <i class="bi bi-1-circle"></i>
+          <h3 class="step-title">Pre-Production</h3>
+          <i class="bi bi-clipboard-check"></i>
+        </div>
+        <p class="step-text">
+          We begin by clarifying your vision and setting clear goals for the project. Together, we define the sound, vibe, and direction of your song so that every step that follows feels intentional.
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="process-step">
+        <div class="step-header">
+          <!-- logo -->
+          <i class="bi bi-2-circle-fill"></i>
+          <h3 class="step-title">Songwriting</h3>
+          <i class="bi bi-pencil"></i>
+
+        </div>
+        <p class="step-text">
+          Whether you’ve already written a full song or just have a few ideas, I can help bring everything together. I support you with refining melodies, lyrics, and chord progressions, as well as finding the right instrumentation, tempo, and rhythm — making sure each element fits your vision and feels natural.
+        </p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="process-step">
+        <div class="step-header">
+          <!-- logo -->
+          <i class="bi bi-3-circle"></i>
+          <h3 class="step-title">Production & Recording</h3>
+          <i class="bi bi-mic"></i>
+
+        </div>
+        <p class="step-text">
+          This is where your song takes shape. I produce the instrumental based on your vision and share drafts along the way to ensure we’re heading in the right direction. Once the instrumental is ready, you can record your vocals — either on your own, or with my guidance in person or remotely. I’ll then edit and polish the vocals so everything sounds cohesive and professional.
+        </p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="process-step">
+        <div class="step-header">
+          <!-- logo -->
+          <i class="bi bi-4-circle-fill"></i>
+          <h3 class="step-title">Mixing & Mastering</h3>
+          <i class="bi bi-sliders2-vertical"></i>
+
+        </div>
+        <p class="step-text">
+          This is the final step, where your song comes together. Mixing and mastering bring balance, clarity, and energy to the track, making it sound polished and ready for release. I make sure every element works in harmony and highlights the heart of your song.
+        </p>
+      </div>
+
+
+
+      <!-- final note -->
+      <div class="process-step final-note">
+        <div class="step-header">
+          <h3><i class="bi bi-patch-check"></i>Pick What You Need</h3>
+        </div>
+        <p class="step-text">
+           You can work with me through the entire process from start to finish or choose just the parts you need. Either way, I’ll make sure your song feels right to you.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+  <!-- Section 5: Contact / Call to Action -->
+  <section id="contact" class="contact-section">
+    <div class="container contact-content">
+
+      <h2 class="section-title">Ready to get started? <i class="bi bi-rocket-takeoff"></i></h2>
+
+
+      <p>Click the button below to tell me more about your project, and I'll get back to you soon.</p>
+
+      {{ partial "getstarted-button.html" . }}
+    </div>
+  </section>
+
+</div>
+
+{{ partial "custom-assets.html" . }}

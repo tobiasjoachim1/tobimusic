@@ -1,0 +1,26 @@
+<div class="song-item">
+  <!-- Player links -->
+  <div class="song-player">
+    <audio id="{{ .title | urlize }}" src="{{ .audio }}" preload="none"></audio>
+
+    <div class="jp-button-wrapper">
+      <svg class="jp-circle" width="60" height="60">
+        <circle class="jp-progress-bg" cx="30" cy="30" r="22" stroke-width="4"></circle>
+        <circle class="jp-progress-ring" cx="30" cy="30" r="22" stroke-width="4"></circle>
+      </svg>
+
+      <button class="play-btn" data-audio="{{ .title | urlize }}">
+        ▶
+      </button>
+    </div>
+  </div>
+
+  <!-- Song Infos -->
+  <div class="song-info">
+    <h3>{{ .title }}</h3>
+    <p class="genre">{{ .genre }}</p>
+  </div>
+</div>
+
+<!-- Linie zwischen Songs -->
+<hr class="song-separator">

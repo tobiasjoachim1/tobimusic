@@ -1,0 +1,52 @@
+baseurl: "/"
+languageCode: "en-us"
+theme: "stage"
+metaDataFormat: "yaml"
+title: "Tobias Joachim"
+
+defaultContentLanguage: "en"
+defaultContentLanguageInSubdir: true
+
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+    title: "Tobias Joachim"
+  de:
+    languageName: "Deutsch"
+    weight: 2
+    title: "Tobias Joachim"
+
+params:
+  subtitle: "A Hugo theme for musicians and creative types."
+
+  # Social information
+  social:
+    facebook: "http://facebook.com/"
+    soundcloud: "http://soundcloud.com/"
+    reverbnation: "http://reverbnation.com/"
+    contact: "/"
+
+  # Artist information
+  authors:
+    stage:
+      name: "Stage"
+      description: "Enter an artist description here."
+      image: "/images/avatar.png"
+      link: "/"
+
+  # Navbar links
+  navbar:
+    blog: "/post/"
+    bio: "/"
+    music: "/album/"
+    events: "/event/"
+    media: "/media/"
+
+  fonts: "Lato:300,500,700"
+  maps: "true"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true

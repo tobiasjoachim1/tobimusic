@@ -1,0 +1,71 @@
+- title: Space
+  artist: Demo
+  genre: Pop, Rnb, Hip Hop
+  cover: /images/song1.jpg
+  audio: /audio/Demo_Space.mp3
+  href: /song1/
+  date: 2025-10-01
+
+- title: What Is Next
+  artist: Demo
+  genre: Hip Hop, Pop
+  cover: /images/song1.jpg
+  audio: /audio/Demo_What Is Next.mp3
+  href: /song2/
+  date: 2025-10-02
+
+- title: Little Games
+  artist: Demo
+  genre: Pop, EDM
+  cover: /images/song1.jpg
+  audio: /audio/Demo_Little Games.mp3
+  href: /song3/
+  date: 2025-10-03
+
+- title: Home
+  artist: Tobi (feat. STELLA)
+  genre: Pop, Hip Hop
+  cover: /images/song1.jpg
+  audio: /audio/Demo_Home.mp3
+  href: /song3/
+  date: 2025-10-04
+
+- title: Slow It Down
+  artist: Demo
+  genre: Hip Hop, RnB
+  cover: /images/song1.jpg
+  audio: /audio/Demo_Slow It Down.mp3
+  href: /song3/
+  date: 2025-10-05
+
+- title: All The Way Up
+  artist: Demo
+  genre: Pop, Dance
+  cover: /images/song1.jpg
+  audio: /audio/Demo_All The Way Up.mp3
+  href: /song3/
+  date: 2025-10-06
+
+- title: Paradise
+  artist: Tobi, Mocean
+  genre: EDM, Hip Hop
+  cover: /images/song1.jpg
+  audio: /audio/Demo_Paradise.mp3
+  href: /song3/
+  date: 2025-10-07
+
+- title: The One
+  artist: Demo
+  genre: Pop, RnB, Hip Hop
+  cover: /images/song1.jpg
+  audio: /audio/Demo_The One.mp3
+  href: /song3/
+  date: 2025-10-08
+
+- title: Guard Down
+  artist: Lilly
+  genre: Pop, Ballad
+  cover: /images/song1.jpg
+  audio: /audio/Demo_Guard Down.mp3
+  href: /song3/
+  date: 2025-10-09

@@ -1,0 +1,7 @@
+{{/* custom player styles */}}
+{{ $customCSS := resources.Get "css/custom.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $customCSS.Permalink }}">
+
+{{/* custom player script */}}
+{{ $customJS := resources.Get "js/custom.js" | minify | fingerprint }}
+<script src="{{ $customJS.Permalink }}"></script>

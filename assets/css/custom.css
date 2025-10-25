@@ -1,0 +1,830 @@
+:root {
+  --color-dark: #262626;   /* DARK GREY */
+  --color-light: #FFFBF2;  /* OFF WHITE */
+  --color-lightdark: #616161;  /* OFF WHITE */
+  --color-accent: #34AB00;  /* OFF WHITE */
+
+  /* Base font size */
+  --font-base: 16px;
+
+  /* Typographic scale (clamp for responsive sizing) var(--fontsize-tiny) */
+  --fontsize-tiny: clamp(0.8rem, 1.5vw, 1rem);   /* extra small */
+  --fontsize-small: clamp(1rem, 2vw, 1.2rem);     /* small */
+  --fontsize-text: clamp(1.3rem, 2vw, 1.5rem); /* medium / body text */
+  /* --fontsize-h4: clamp(2.3rem, 2.5vw, 2.8rem);     /* Weitere Überschrift */
+  --fontsize-h3: clamp(2rem, 4vw, 2.5rem);     /* Weitere Überschrift */
+  --fontsize-h2: clamp(2.5rem, 5vw, 3.5rem);    /* section überschrift */
+  --fontsize-h1: clamp(3rem, 6vw, 5rem);     /* hero */
+}
+
+/* ===== Grundschrift ===== */
+body {
+  font-family: 'Libre Franklin', sans-serif;
+  /* font-family: 'Bitter', sans-serif; */
+  font-weight: 400;
+}
+
+/* ===== Standard Headings ===== */
+h1 {
+  font-size: var(--fontsize-h1);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: var(--fontsize-h2);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 1.5rem;
+  text-align: center;
+
+}
+
+h3 {
+  font-size: var(--fontsize-h3); /* mittlere Überschrift */
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: var(--fontsize-text);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#about, #portfolio, #hero {
+  scroll-margin-top: 5rem; /* adds space when scrolling to anchor */
+}
+
+.container {
+  max-width: 1200px;
+  margin-inline: auto; /* centers horizontally */
+  padding-inline: 2rem; /* space from screen edge */
+  width: 100%;
+  box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  .container {
+    padding-inline: 2rem;
+  }
+}
+
+
+/* ========================================
+   0 NAVBAR
+======================================== */
+
+/* ===== Navbar default (top of page, transparent) ===== */
+.navbar.navbar-default {
+  background-color: rgba(255, 251, 242, 0); /* fully transparent */
+  color: var(--color-light);                           /* text offwhite */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-bottom: none;
+  box-shadow: none;
+}
+
+/* ===== Brand / site title "Tobias Joachim" Hier könnte ein Logo stehen ===== */
+.navbar.navbar-default .navbar-brand {
+  color: var(--color-light) !important;  /* force offwhite at top */
+  font-size: var(--fontsize-text);            /* bigger than links */
+  font-weight: 700;           /* semi-bold */
+  text-transform: none;       /* regular casing, not uppercase */
+  transition: color 0.3s ease;
+}
+
+/* ===== Navbar Elemente links section titles ===== */
+.navbar.navbar-default .navbar-nav > li > a {
+  color: var(--color-light) !important;
+  font-size: var(--fontsize-text);
+  font-weight: 400;
+  padding: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+/* ===== Hover effect for all links ===== */
+.navbar.navbar-default .navbar-nav > li > a:hover,
+.navbar.navbar-default .navbar-nav.navbar-right > li > a:hover {
+  color: #1db954; /* green on hover */
+}
+
+.navbar-nav.navbar-right {
+  display: flex;
+  align-items: center; /* vertically centers items */
+  justify-content: flex-end; /* pushes everything to the right side */
+  gap: 2rem; /* space between children */
+  padding: 1rem;
+}
+
+/* ===== Navbar Get started button ===== */
+.navbar .navbar-right .btn-getstarted {
+  padding: 0 1.2rem;
+  font-size: var(--fontsize-text);              /* text size */
+  font-weight: 400;              /* text size */
+  line-height: 30px;               /* vertically center text */
+  background-color: rgba(var(--color-light), 0.5); /* background */
+  color: var(--color-light);         /* text */
+  border: 1.5px solid var(--color-light); /* border */
+  border-radius: 8px;               /* rounded corners */
+  display: inline-block;            /* ensures proper sizing */
+  transition: all 0.3s ease;
+}
+/* Hover effect */
+.navbar .navbar-right .btn-getstarted:hover {
+  background-color: #FFFFFF25;
+  border-color: var(--color-light);
+  color: var(--color-light);         /* text */
+}
+
+
+/* ===== Navbar after scrolling ===== */
+.navbar.navbar-default.scrolled {
+  background-color: var(--color-dark) !important;
+  color: var(--color-light) !important;
+}
+
+.navbar.navbar-default.scrolled .navbar-brand,
+.navbar.navbar-default.scrolled .navbar-nav > li > a,
+.navbar.navbar-default.scrolled .navbar-nav.navbar-right > li > a {
+  color: var(--color-light) !important;
+}
+
+/* ===== Responsive adjustments ===== */
+@media (max-width: 768px) {
+
+  /* Hamburger / toggle button */
+  .navbar-toggle {
+    z-index: 1060; /* above overlay & menu */
+    border: 1px solid var(--color-light);
+    border-radius: 6px;
+    background: transparent; /* remove background */
+    padding: 0.5rem;
+    outline: none;      /* removes focus outline */
+  }
+  .navbar-toggle:hover {
+    background-color: #FFFFFF25 !important; /* dark overlay at 30% opacity */
+
+  }
+
+  /* Collapse menu fixed to viewport */
+  .navbar-collapse.collapse {
+    position: fixed;
+    top: 0;
+    right: -80vw; /* start off-screen */
+    width: 80vw;
+    height: 100vh;
+    background-color: var(--color-light);
+    z-index: 1050;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    padding-top: 4rem;
+    overflow-y: auto;
+  }
+
+  /* Open state */
+  .navbar-collapse.collapse.show,
+  .navbar-collapse.collapse.open {
+    right: 0;
+  }
+
+  /* Links in mobile menu */
+  .navbar-collapse.collapse .navbar-nav {
+    flex-direction: column;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar-collapse.collapse .navbar-nav > li > a {
+    padding: 1rem 2rem;
+    color: var(--color-dark) !important;
+    font-size: var(--fontsize-h3);
+  }
+
+  .navbar-collapse.collapse .navbar-nav > li > a:hover {
+    color: var(--color-accent);
+  }
+
+  /* Right side button in menu */
+  .navbar-collapse.collapse .navbar-right {
+    margin-top: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* Dark overlay on left side */
+  .mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 1040;
+  }
+
+  .mobile-overlay.active {
+    display: block;
+  }
+}
+
+/* X animation */
+.navbar-toggle.open .top-bar {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-toggle.open .middle-bar {
+  opacity: 0;
+}
+
+.navbar-toggle.open .bottom-bar {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.navbar-toggle .icon-bar {
+  transition: all 0.3s ease;
+}
+
+.hamburger-icon {
+  display: inline;
+  font-size: 1.5rem;
+  color: var(--color-light);
+}
+
+.close-icon {
+  display: none;
+  font-size: 1.5rem;
+  color: var(--color-light);
+}
+
+/* When menu is open, toggle which icon is visible */
+.navbar-toggle.open .hamburger-icon {
+  display: none;
+}
+
+.navbar-toggle.open .close-icon {
+  display: inline;
+}
+
+.navbar-toggle i {
+  font-size: 1.5em;   /* change size */
+  color: var(--color-light);  /* change color */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Optionally, change color when active */
+.navbar-toggle.open i.bi-x-lg {
+  color: var(--color-dark);
+}
+
+/* Language switcher */
+.language-switcher {
+  display: flex !important;
+  flex-direction: row !important;
+  height: 100%;
+  gap: 0.5rem;
+  font-size: var(--fontsize-text);
+}
+
+.language-switcher .flag-icon {
+  width: var(--fontsize-h4);   /* matches M size from Flagpack */
+
+  height: auto;
+  /* border-radius: 3px; /* optional rounded corners */ */
+  vertical-align: middle;
+}
+
+.language-switcher .lang-link {
+  color: var(--color-light);
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  opacity: 0.6; /* inactive language slightly dimmed */
+}
+
+.language-switcher .lang-link.active {
+  opacity: 1; /* active language full opacity */
+}
+
+.language-switcher .lang-link:hover {
+  opacity: 0.9;
+}
+
+.language-switcher .separator {
+  color: var(--color-light);
+  opacity: 0.8;
+  display: inline-block;  /* ensure it's inline with links */
+  margin: 0 0.25rem;      /* optional spacing */
+  vertical-align: middle; /* align with flags/text */
+}
+
+
+
+/* ========================================
+   1 Hero Section
+======================================== */
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 50vh; /* half of viewport height */
+  background-image: url('/images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-overlay {  /* layer on top of background*/
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* optional dark overlay*/
+  display: flex;
+  align-items: center; /* vertical centering */
+  justify-content: flex-start; /* horizontal centering */
+}
+@media (min-width: 768px) {
+  .hero-overlay {
+    justify-content: flex-start;
+    text-align: left;
+    /* padding-left: 5rem; */
+  }
+}
+
+.hero-content {
+  color: var(--color-light);
+  margin: 0 auto;
+  padding-left: clamp(1rem, 10vw, 8rem);
+  padding-right: clamp(1rem, 10vw, 8rem);
+  max-width: 1200px;
+}
+@media (min-width: 1024px) {
+  .hero-content {
+    max-width: 50%;
+    padding-right: 0; /* right side stays open */
+  }
+}
+
+.hero-content h1 {
+  margin-bottom: 0rem;
+}
+
+.hero-content h3 {
+  margin-bottom: 1.2rem;
+}
+
+.hero-content p {
+  margin-bottom: 5rem;
+}
+
+
+
+/* ========================================
+   2 About Section
+======================================== */
+
+.about-section {
+  background-color: var(--color-dark);  /* DARK GREY DARK GREY DARK GREY DARK GREY DARK GREY DARK GREY DARK GREY DARK GREY */
+  width: 100%;
+  padding-top: 6rem; /* top/bottom 4rem, left/right 2rem */
+  padding-bottom: 4rem;
+}
+
+.about-content {
+  display: flex;
+  align-items: flex-start; /* keep top alignment */
+  gap: 3rem;               /* space between image and text */
+  max-width: 900px;       /* keep content width limited */
+  margin: 0 auto;          /* center the content block horizontally */
+  padding: 0rem 3rem;         /* space from edges of screen */
+}
+
+.about-image img {
+  width: 300px; /* adjust as needed */
+  border: 8px solid var(--color-light);
+  border-radius: 0px;
+  object-fit: cover;
+}
+
+.about-text {
+  flex: 1;
+  font-weight: 400;
+  color: var(--color-light);
+  line-height: 1.7;
+  font-size: var(--fontsize-text);
+}
+
+/* ===== Responsive adjustments ===== */
+@media (max-width: 768px) {
+  .about-section {
+    padding-top: 2rem; /* top/bottom 4rem, left/right 2rem */
+    padding-bottom: 0rem;
+  }
+
+  .about-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0rem 1.5rem;
+  }
+
+  .about-image img {
+    width: 100%; /* smaller on mobile */
+  }
+
+  .about-text {
+    text-align: left;
+    padding: 1em
+  }
+
+}
+
+/* ========================================
+   3 Portfolio Section
+======================================== */
+
+.portfolio-section {
+  background-color: var(--color-light);
+  width: 100%;
+  padding: 2rem 0; /* same vertical spacing as about-section */
+  padding-bottom: 6rem;
+}
+
+/* ===== Songliste ===== */
+/* Rahmen um gesamte Liste */
+.song-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  border: 2px solid black;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #fff;
+  max-width: 400px;
+  justify-content: center;
+}
+
+/* Einzelne Songs */
+.song-item {
+  display: flex;
+  align-items: center;
+  padding: 0.3rem;
+}
+
+.song-separator {
+  border: none;                 /* Standard-HR-Rahmen entfernen */
+  border-top: 1px solid #ccc;   /* graue Linie */
+  margin: 0 1rem;               /* Abstand links und rechts – Linie wird kürzer */
+}
+
+/* ===== Cover ausgeblendet ===== */
+.song-cover {
+  display: none;
+}
+
+/* Artists ausblenden */
+.song-info .artist {
+  display: none;
+}
+
+/* ===== Songplayer (Playbutton links) ===== */
+.song-player {
+  width: 70px;
+  text-align: center;
+  position: relative;
+  margin-right: 1rem;
+}
+
+/* ===== Songinfo (rechts vom Button) ===== */
+.song-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Songtitel */
+.song-info h3 {
+  margin: 0;
+  font-size: var(--fontsize-text);
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+/* Genres */
+.song-info p {
+  margin: 0.2rem 0 0 0;
+  color: var(--color-lightdark);
+  font-size: var(--fontsize-small);
+}
+
+/* ===== Fortschrittsring & Button ===== */
+.jp-button-wrapper {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+}
+
+/* Kreis-Container */
+.jp-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+/* Hintergrund-Kreis */
+.jp-progress-bg {
+  fill: none;
+  stroke: var(--color-dark);  /* dunkler Hintergrund-Kreis */
+  opacity: 0.3;
+}
+
+/* Fortschrittsring */
+.jp-progress-ring {
+  fill: none;
+  stroke: var(--color-accent);  /* Akzentfarbe (Grün) */
+  stroke-dasharray: 138;
+  stroke-dashoffset: 138;
+  transition: stroke-dashoffset 0.1s linear;
+}
+
+/* Play-Button */
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: var(--color-dark); /* heller Button */
+  color: var(--color-light);       /* dunkles Icon (z. B. Pfeil) */
+  border-radius: 50%;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.play-btn:hover {
+  background: var(--color-accent);
+  color: var(--color-light);
+}
+
+
+/* ========================================
+   4 Process Section
+======================================== */
+
+/* ===== Process Section ===== */
+.process-section {
+  background-color: var(--color-dark); /* optional background */
+  color: var(--color-light);
+  padding: 2em 0; /* Abstand oben und unten */
+
+}
+
+.process-section .container {
+  max-width: 650px;
+  padding-inline: 5rem;
+  /* width: 80%; */
+}
+@media (max-width: 768px) {
+  .process-section .container {
+    padding-inline: 4rem;
+  }
+}
+
+/* Padding nach section title */
+.process-section .section-title {
+  margin-bottom: 4rem;
+}
+
+/* Each step container */
+.process-step {
+  margin-bottom: 4rem; /* spacing between steps */
+}
+
+/* Icons */
+.process-step .step-header i {
+  font-size: var(--fontsize-h2);     /* individuell anpassbar */
+  color: var(--color-light);
+}
+
+.process-step .step-header i.bi-sliders2-vertical,
+.process-step .step-header i.bi-mic,
+.process-step .step-header i.bi-clipboard-check,
+.process-step .step-header i.bi-pencil {
+  font-size: 1.7em;
+  padding-left: 0.1em
+}
+
+.process-step .step-header i.bi-patch-check {
+  vertical-align: bottom; /* aligns icon nicely with text baseline */
+  margin-right: 0.3em;    /* add a little spacing */
+}
+
+/* Header row: icon + title */
+.process-step .step-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* space between icon and title */
+  margin-bottom: 0.5rem;
+}
+
+/* Step title */
+.process-step .step-title {
+  font-size: var(--fontsize-h3);
+  font-weight: 600;
+  margin: 0;
+  padding-left: 0.5rem;
+}
+
+/* Step description text */
+.process-step .step-text {
+  font-size: var(--fontsize-text);
+  line-height: 1.6;
+  margin: 0;
+  padding-top: 1rem;
+  padding-left: 0.4rem; /* optional, aligns text slightly right of icon */
+}
+
+/* Optional: special styling for final note */
+.process-step.final-note .step-text {
+  font-weight: 600;
+  padding-left: 0.4rem; /* optional, aligns text slightly right of icon */
+}
+
+/* ===== Responsive adjustments ===== */
+@media (max-width: 768px) {
+  .process-step .step-header {
+    flex-direction: row; /* can stay row or switch to column if needed */
+    gap: 0.5rem;
+  }
+
+  .process-step .step-text {
+    padding-left: 0; /* full width on small screens */
+  }
+}
+
+/* ========================================
+   5 Contact or End Section
+======================================== */
+
+.contact-section {
+  background-color: var(--color-light);
+  width: 100%;
+  padding: 4rem 0; /* same vertical spacing as about-section */
+}
+
+.section-title i {
+ font-size: 1em;        /* match surrounding text size */
+ vertical-align: middle; /* aligns icon nicely with text baseline */
+ margin-left: 0.3rem;    /* add a little spacing */
+}
+
+#contact .container {
+  display: flex;
+  flex-direction: column;    /* stack items vertically */
+  justify-content: center;   /* vertical centering if needed */
+  align-items: center;       /* horizontal centering */
+  gap: 1rem;                 /* optional space between items */
+  padding: 2rem 2rem;
+  margin-bottom: 15rem; /* space below the button */
+
+}
+
+.contact-content h2 {
+  font-size: var(--fontsize-h2);
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.contact-content p {
+  font-size: var(--fontsize-text);
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.btn-getstarted {
+  background-color: var(--color-dark);      /* Hintergrund */
+  border: 2px solid var(--color-dark);      /* Rahmen */
+  color: var(--color-light);                /* Text */
+  padding: 1rem 2rem;                       /* adjust size */
+  border-radius: 10px;                      /* rounded */
+  font-weight: 600;
+  font-size: 2rem; /* controls text size */
+  cursor: pointer;
+  transition: all 0.3s ease;  /* smooth transition */
+  text-decoration: none;
+}
+.btn-getstarted:hover {
+  background-color: var(--color-lightdark);       /* Hintergrund */
+  border-color: var(--color-lightdark);           /* Rahmen */
+  color: var(--color-light);                 /* Text */
+  text-decoration: none;
+}
+
+
+
+
+
+/* === Hero Button (muss hier stehen sonst funktioniert es nicht) === */
+.hero-btn {
+  background-color: var(--color-light);
+  border: 1px solid var(--color-dark);
+  color: var(--color-dark);
+  font-size: var(--fontsize-h);
+  padding: 1rem 1.2rem;
+}
+.hero-btn:hover {
+  background-color: #FFFFFFBB;
+  border: 1px solid var(--color-lightdark);
+  color: var(--color-dark);
+
+}
+
+
+/* Get Started / Tally Page embed fullscreen */
+.getstarted-embed {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* full viewport height */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.getstarted-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+
+/* ===== Tally embed wrapper ===== */
+.tally-wrapper {
+  width: 50%;
+  max-width: 700px;     /* prevents it from becoming too wide */
+  margin: 0 auto;       /* center horizontally */
+  padding: 2rem 0;      /* space above/below */
+}
+.tally-wrapper iframe {
+  width: 100%;
+  height: 600px;
+  border: 2px dashed red; /* demo border */
+  border-radius: 8px;
+}
+
+/* ===== Responsive adjustments ===== */
+@media (max-width: 768px) {
+  .tally-wrapper {
+    width: 90%;      /* make form almost full width on mobile */
+    padding: 1rem;   /* comfortable side padding */
+  }
+
+  .tally-wrapper iframe {
+    height: 500px;   /* slightly smaller height for mobile */
+  }
+}
+
+
+
+/* ========================================
+   Debugging
+======================================== */
+
+/* .container {  outline: 2px dashed red; }
+
+.getstarted-section iframe {
+  border: 2px dashed red;
+} */
+
+/* outline doesn’t affect layout */
+
+
+
+/* .navbar {
+  outline: 2px dashed red;
+}
+
+.navbar .navbar-right{
+  outline: 2px dashed red;
+}
+
+.navbar .navbar-right .btn-getstarted{
+  outline: 2px dashed red;
+}
+
+.language-switcher {
+  outline: 2px dashed red;
+} */

@@ -1,0 +1,30 @@
+{{ partial "head.html" . }}
+{{ partial "navbar.html" . }}
+<div class="wrapper">
+  {{ with .Params.coverimage }}
+    <div class="article-cover" data-stellar-background-ratio="0.25" style="background-image: url({{ . }})"></div>
+  {{ end }}
+  <article id="main-container" >
+    {{ partial "articleheader.html" . }}
+    {{ if or (eq .Params.toc "true") (eq .Params.toc true) }}
+    <section id="article-content" class="container article-content">
+      <div class="col-sm-9">
+        {{ .Content }}
+      </div>
+      <div id="article-toc" class="col-sm-3">
+        {{ .TableOfContents }}
+      </div>
+    </section>
+    {{ else }}
+    <section id="article-content" class="container article-content">
+      <div class="col-sm-12">
+        {{ .Content }}
+      </div>
+    </section>
+    {{ end }}
+    {{ partial "articlefooter.html" . }}
+  </article>
+</div>
+
+{{ partial "custom-assets.html" . }} 
+{{ partial "footer.html" . }}

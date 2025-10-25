@@ -1,0 +1,42 @@
+{{ partial "head.html" . }}
+{{ partial "navbar.html" . }}
+{{ $author := .Params.author }}
+<div class="wrapper">
+  {{ if or (eq .Site.Params.maps "true") (eq .Site.Params.maps true) }}
+      <div class="article-map" data-stellar-background-ratio="0.25" data-stellar-vertical-offset="1200" style="background-image: url('http://maps.googleapis.com/maps/api/staticmap?center={{ .Params.map.lat }},{{ .Params.map.long }}&zoom={{ .Params.map.zoom }}&size=1680x400&scale=2')"></div>
+  {{ else }}
+    {{ with .Params.coverphoto }}<div class="article-map" data-stellar-background-ratio="0.25" data-stellar-vertical-offset="1200" style="background-image: url('{{ .Params.coverphoto }}')"></div>{{ end }}
+  {{ end }}
+  <article id="main-container-event" >
+    <header class="container article-header">
+        <h1 class="title">{{ .Title }}</h1>
+        {{ with .Description }}<h4 class="subtitle">{{ . }}</h4>{{ end }}
+        <hr />
+    </header>
+    <section class="container article-content">
+      <div class="article-sidebar col-sm-3">
+          <ul class="sidebar-info">
+          {{ if eq .Site.Params.maps "true" }}
+            <li>
+              <img class="street-view img-thumbnail" src="http://maps.googleapis.com/maps/api/streetview?size=300x300&location={{ .Params.map.lat }},{{ .Params.map.long }}&fov=90&heading={{ .Params.map.heading }}&pitch=0"></img>
+            </li>
+          {{ else }}
+            {{ with .Params.event.photo }}
+            <li>
+              <img class="street-view img-thumbnail" src="{{ .Params.smallphoto }}"></img>
+            </li>
+            {{ end }}
+          {{ end }}
+            <li><h3>{{ .Params.event.location }}</h3></li>
+            <li class="text-muted"><time>{{ .Params.event.date }}</time></li>
+            <li class="text-muted"><time>{{ .Params.event.time }}</time></li>
+          </ul>
+      </div>
+      <div class="col-sm-9">
+          {{ .Content }}
+      </div>
+    </section>
+    {{ partial "articlefooter.html" . }}
+  </article>
+</div>
+{{ partial "footer.html" . }}

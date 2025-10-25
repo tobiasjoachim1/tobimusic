@@ -1,0 +1,35 @@
+<div id="{{ .Get "id" }}" class="shortcode-player" data-src="{{ .Get "src" }}" title="{{ .Get "title" }}">
+  <!-- jPlayer Container -->
+  <div id="jquery_jplayer_{{ .Get "id" }}" class="jp-jplayer"></div>
+
+  <!-- Player GUI -->
+  <div id="jp_container_{{ .Get "id" }}" class="jp-audio-stream">
+    <div class="jp-type-single">
+      <div class="jp-details">
+        <ul>
+          <li><a href="{{ .Get "href" }}">{{ .Get "title" }}</a></li>
+        </ul>
+      </div>
+
+      <div class="jp-gui jp-interface">
+        <div class="jp-button-wrapper">
+          <!-- Progress Circle -->
+          <svg class="jp-circle" width="60" height="60">
+            <circle class="jp-progress-bg" cx="30" cy="30" r="22" stroke-width="4"></circle>
+            <circle class="jp-progress-ring" cx="30" cy="30" r="22" stroke-width="4"></circle>
+          </svg>
+
+          <!-- Play/Pause Buttons -->
+          <div class="jp-controls">
+            <a href="javascript:;" class="jp-play" tabindex="1">
+              ▶
+            </a>
+            <a href="javascript:;" class="jp-pause" tabindex="1" style="display:none;">
+              ❚❚
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
