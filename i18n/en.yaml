@@ -2,16 +2,16 @@
 about_navbar: "About Me"
 listen_navbar: "Music"
 process_navbar: "My Process"
-button_get_started: "Get Started"
+button_get_started: "Get started"
 
 # 1 Hero
 hero_subtitle: "Music Producer"
-hero_catch_phrase: "Helping artists from all around the world turn their ideas into songs ready for release."
+hero_catch_phrase: "Helping artists from all around the world turn their ideas into release-ready songs."
 hero_button: "Work with me"
 
 # 2 about
-about_text_1: "I'm a mixing / mastering engineer and producer who works with artists to elevate their records and bring their creative ideas to life."
-about_text_2: "Through collaboration, I help artists realise the vision for their music, create art that connects with their audience, and further their career."
-
+about_text_1: "I am a music producer from Münster and studied keyboard and music production at the Münster University of Music for four years. For me, music production combines creativity, emotion, and technical inventiveness in a unique way – the perfect mix for me."
+about_text_2: "I help artists develop their ideas into finished songs. I cover the entire process: from pre-production, songwriting, arrangement, and production to recording vocals, mixing, and mastering. Whether you already have finished ideas or are just starting out, I adapt to your needs and ensure your music sounds exactly as you envision it."
+about_text_3: "I take care of the production and all technical aspects so you can focus on your music. At the same time, I support you creatively and help you bring your song to completion."
 #3 portfolio
 portfolio_title: "Listen to my Work"

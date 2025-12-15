@@ -1,11 +1,10 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
 
-
     <!-- Navbar header -->
     <div class="navbar-header">
       <!-- Mobile toggle button -->
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+      <button type="button" class="navbar-toggle collapsed" id="custom-navbar-toggle">
         <i class="bi bi-list hamburger-icon"></i>
         <i class="bi bi-x-lg close-icon"></i>
       </button>
@@ -13,44 +12,47 @@
       <a class="navbar-brand" href="#hero">{{ .Site.Title }}</a>
     </div>
 
-
-
     <!-- Navbar collapse / menu -->
     <div class="collapse navbar-collapse" id="navbar-collapse">
 
-      <!-- Left menu (only desktop) -->
-      <ul class="nav navbar-nav navbar-menu-right">
-        <li><a href="#about">{{ i18n "about_navbar" }}</a></li>
-        <li><a href="#portfolio">{{ i18n "listen_navbar" }}</a></li>
-        <li><a href="#process">{{ i18n "process_navbar" }}</a></li>
-      </ul>
+      <!-- Container to hold menu links and actions separately -->
+      <div class="mobile-menu-wrapper">
 
-      <!-- Right side button -->
-      <div class="navbar-nav navbar-right">
-        <div class="language-switcher">
-          {{ $current := .Site.Language.Lang }}
+        <!-- Top links (sections) -->
+        <div class="menu-links">
+          <ul class="nav navbar-nav navbar-menu-right">
+            <li><a href="#about">{{ i18n "about_navbar" }}</a></li>
+            <li><a href="#portfolio">{{ i18n "listen_navbar" }}</a></li>
+            <li><a href="#process">{{ i18n "process_navbar" }}</a></li>
+          </ul>
+        </div>
 
-          <!-- English -->
-          <a href="/en/" class="lang-link {{ if eq $current "en" }}active{{ end }}">
-            <img src="/images/flags/en.svg" alt="EN" class="flag-icon"> EN
-          </a>
+        <!-- Bottom actions: Get started + language switcher -->
+        <div class="menu-actions">
+          <div class="navbar-nav navbar-right">
 
-          <span class="separator">|</span>
+            <div class="language-switcher">
+              {{ $current := .Site.Language.Lang }}
+              <a href="/en/" class="lang-link {{ if eq $current "en" }}active{{ end }}">
+                <img src="/images/flags/en.svg" alt="EN" class="flag-icon"> EN
+              </a>
+              <span class="separator">|</span>
+              <a href="/de/" class="lang-link {{ if eq $current "de" }}active{{ end }}">
+                <img src="/images/flags/de.svg" alt="DE" class="flag-icon"> DE
+              </a>
+            </div>
 
-          <!-- German -->
-          <a href="/de/" class="lang-link {{ if eq $current "de" }}active{{ end }}">
-            <img src="/images/flags/de.svg" alt="DE" class="flag-icon"> DE
-          </a>
+            {{ partial "getstarted-button.html" . }}
+
           </div>
+        </div>
 
-        {{ partial "getstarted-button.html" . }}
-      </div>
-
-
-      <!-- Overlay for mobile menu -->
-      <div class="mobile-overlay"></div>
+      </div><!-- /.mobile-menu-wrapper -->
 
     </div><!-- /.navbar-collapse -->
+
+    <!-- Overlay for mobile menu -->
+    <div class="mobile-overlay"></div>
 
   </div>
 </nav>

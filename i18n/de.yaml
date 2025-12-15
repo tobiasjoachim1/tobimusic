@@ -7,12 +7,12 @@ button_get_started: "Los geht's"
 
 # 1 Hero
 hero_subtitle: "Musikproduzent"
-hero_catch_phrase: "Ich helfe Künstler:innen dabei, ihre Ideen in fertige Songs zu verwandeln, die bereit sind für den Release."
+hero_catch_phrase: "Ich helfe Künstler:innen dabei, aus ihren Ideen fertige Songs zu machen."
 hero_button: "Direkt loslegen"
 
 # 2 about
-about_text_1: "Ich bin Mixing-/Mastering-Ingenieur und Produzent und arbeite mit Künstler:innen zusammen, um ihre Aufnahmen zu verbessern und ihre kreativen Ideen zum Leben zu erwecken."
-about_text_2: "Durch Zusammenarbeit helfe ich Künstler:innen, die Vision für ihre Musik umzusetzen, Kunst zu schaffen, die ihr Publikum berührt, und ihre Karriere voranzubringen."
-
+about_text_1: "Ich bin Musikproduzent aus Münster und habe 4 Jahre Keyboard & Musikproduktion an der Musikhochschule Münster studiert. Für mich vereint Musikproduktion Kreativität, Emotionen und technischen Erfindergeist auf eine einzigartige Weise – die perfekte Mischung für mich."
+about_text_2: "Ich begleite Künstler:innen dabei, aus ihren Ideen fertige Songs zu entwickeln. Dabei decke ich den gesamten Prozess ab: von Pre-Production, Songwriting, Arrangement und Produktion über die Aufnahme von Vocals bis hin zu Mixing und Mastering. Ob du schon fertige Ideen hast oder noch am Anfang stehst – ich passe mich an deine Bedürfnisse an und sorge dafür, dass deine Musik so klingt, wie du sie dir vorstellst."
+about_text_3: "Ich kümmere mich um die Produktion und alle technischen Aspekte, damit du dich auf deine Musik konzentrieren kannst. Gleichzeitig unterstütze ich dich kreativ und helfe dir, deinen Song endlich fertigzustellen."
 # 3 Portfolio
 portfolio_title: "Hör dir an, was ich gemacht habe"

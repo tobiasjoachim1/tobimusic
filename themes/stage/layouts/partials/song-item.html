@@ -10,8 +10,9 @@
       </svg>
 
       <button class="play-btn" data-audio="{{ .title | urlize }}">
-        ▶
+        <i class="bi bi-play-fill"></i>
       </button>
+
     </div>
   </div>
 
@@ -21,6 +22,3 @@
     <p class="genre">{{ .genre }}</p>
   </div>
 </div>
-
-<!-- Linie zwischen Songs -->
-<hr class="song-separator">

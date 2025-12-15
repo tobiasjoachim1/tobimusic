@@ -1,3 +1,6 @@
+console.log("custom.js loaded");
+
+
 $(document).ready(function() {
   const audios = $("audio");
 
@@ -11,90 +14,91 @@ $(document).ready(function() {
     ring.css("stroke-dasharray", circumference);
     ring.css("stroke-dashoffset", circumference);
 
+    // set initial icon
+    btn.html('<i class="bi bi-play-fill"></i>');
+
     btn.on("click", function() {
-      // 🔇 Stoppe alle anderen Audios
+      // 🔇 Stop all other audios
       audios.each(function() {
         if (this !== audio) {
           this.pause();
           this.currentTime = 0;
-          $(".play-btn").filter(`[data-audio='${this.id}']`).text("▶");
-          const otherRing = $(".play-btn").filter(`[data-audio='${this.id}']`).siblings("svg").find(".jp-progress-ring");
-          otherRing.css("stroke-dashoffset", 2 * Math.PI * 22); // zurücksetzen
+          const otherBtn = $(".play-btn").filter(`[data-audio='${this.id}']`);
+          otherBtn.html('<i class="bi bi-play-fill"></i>');
+          const otherRing = otherBtn.siblings("svg").find(".jp-progress-ring");
+          otherRing.css("stroke-dashoffset", 2 * Math.PI * 22); // reset
         }
       });
 
-      // ⏯️ Aktuelles Audio abspielen/pausieren
+      // ⏯️ Play / pause current audio
       if (audio.paused) {
         audio.play();
-        btn.text("❚❚"); // Pause-Symbol
+        btn.html('<i class="bi bi-pause-fill"></i>');
       } else {
         audio.pause();
-        btn.text("▶"); // Play-Symbol
+        btn.html('<i class="bi bi-play-fill"></i>');
       }
     });
 
-    // Fortschrittsring aktualisieren
+    // update progress ring
     audio.ontimeupdate = function() {
       const progress = audio.currentTime / audio.duration;
       const offset = circumference - progress * circumference;
       ring.css("stroke-dashoffset", offset);
     };
 
-    // Zurücksetzen, wenn Song endet
+    // reset when song ends
     audio.onended = function() {
-      btn.text("▶");
+      btn.html('<i class="bi bi-play-fill"></i>');
       ring.css("stroke-dashoffset", circumference);
     };
   });
 });
 
 
+
 window.addEventListener('scroll', function() {
   const navbar = document.querySelector('.navbar');
-  const scrollY = window.scrollY;
+  const collapseMenu = document.querySelector('#navbar-collapse');
 
-  if (scrollY > 100) { // ab 100px Scrollhöhe
+  // If mobile menu is open, skip scroll effect
+  if (collapseMenu.classList.contains('open')) return;
+
+  if (window.scrollY > 100) { // adjust threshold if needed
     navbar.classList.add('scrolled');
   } else {
     navbar.classList.remove('scrolled');
   }
 });
 
+
 //hamburger
 $(document).ready(function() {
-  const $toggle = $(".navbar-toggle");
-  const $collapse = $(".navbar-collapse.collapse");
+  const $toggle = $("#custom-navbar-toggle");
+  const $collapse = $("#navbar-collapse");
   const $overlay = $(".mobile-overlay");
 
   $toggle.click(function() {
-    // Prevent flash: hide default collapse instantly
-    $collapse.css('display', 'block');
-
-    // Toggle slide-in menu with smooth transition
+    const isOpen = $collapse.hasClass("open");
     $collapse.toggleClass("open");
-
-    // Toggle overlay
     $overlay.toggleClass("active");
-
-    // Toggle hamburger → X icon
     $toggle.toggleClass("open");
+
+    // Force remove Bootstrap’s “collapsed” background state
+    if (isOpen) {
+      $toggle.addClass("collapsed");
+    } else {
+      $toggle.removeClass("collapsed");
+    }
+
+    // Remove focus immediately (fallback)
+    setTimeout(() => $toggle.blur(), 10);
   });
 
   $overlay.click(function() {
-    // Close slide-in menu
     $collapse.removeClass("open");
-
-    // Hide overlay
-    $(this).removeClass("active");
-
-    // Reset hamburger icon
-    $toggle.removeClass("open");
-  });
-
-  // Optional: handle transition end to reset display if menu closed
-  $collapse.on('transitionend webkitTransitionEnd oTransitionEnd', function() {
-    if (!$collapse.hasClass("open")) {
-      $collapse.css('display', '');
-    }
+    $overlay.removeClass("active");
+    $toggle.removeClass("open").addClass("collapsed");
+    $toggle.blur();
   });
 });

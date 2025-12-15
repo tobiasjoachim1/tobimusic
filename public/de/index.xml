@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tobias Joachim</title>
-    <link>http://192.168.0.104:1313/de/</link>
+    <link>//localhost:1313/de/</link>
     <description>Recent content on Tobias Joachim</description>
     <generator>Hugo</generator>
     <language>de</language>
-    <atom:link href="http://192.168.0.104:1313/de/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/de/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

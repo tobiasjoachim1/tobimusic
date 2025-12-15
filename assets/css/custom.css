@@ -7,15 +7,43 @@
   /* Base font size */
   --font-base: 16px;
 
-  /* Typographic scale (clamp for responsive sizing) var(--fontsize-tiny) */
-  --fontsize-tiny: clamp(0.8rem, 1.5vw, 1rem);   /* extra small */
-  --fontsize-small: clamp(1rem, 2vw, 1.2rem);     /* small */
-  --fontsize-text: clamp(1.3rem, 2vw, 1.5rem); /* medium / body text */
-  /* --fontsize-h4: clamp(2.3rem, 2.5vw, 2.8rem);     /* Weitere Überschrift */
-  --fontsize-h3: clamp(2rem, 4vw, 2.5rem);     /* Weitere Überschrift */
-  --fontsize-h2: clamp(2.5rem, 5vw, 3.5rem);    /* section überschrift */
-  --fontsize-h1: clamp(3rem, 6vw, 5rem);     /* hero */
+  /* For desktop */
+  --fontsize-tiny: clamp(0.9rem, 1.1vw, 1rem);
+  --fontsize-small: clamp(1rem, 1.4vw, 1.2rem);
+  --fontsize-text: clamp(1.2rem, 1.8vw, 1.4rem);
+  --fontsize-h3: clamp(1.8rem, 2.5vw, 2.2rem);
+  --fontsize-h2: clamp(2.2rem, 3.5vw, 3rem);
+  --fontsize-h1: clamp(2.8rem, 4.5vw, 4rem);
 }
+@media (max-width: 600px) {
+  :root {
+    /* For Smartphone */
+    --fontsize-tiny: clamp(0.9rem, 1.1vw, 1rem);
+    --fontsize-small: clamp(1.3rem, 1.7vw, 1.1.6rem);
+    --fontsize-text: clamp(1.6rem, 3vw, 2rem);
+    --fontsize-h3: clamp(2.3rem, 3vw, 2.7rem);
+    --fontsize-h2: clamp(3rem, 5.5vw, 3.5rem);
+    --fontsize-h1: clamp(3.5rem, 5vw, 4.5rem);
+  }
+}
+
+/* Prevent horizontal scroll */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Ensure container doesn’t go outside viewport */
+body {
+  width: 100vw; /* full viewport width */
+  box-sizing: border-box; /* includes padding in width calculation */
+}
+
+/* Optional: ensure all elements respect viewport */
+* {
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
 
 /* ===== Grundschrift ===== */
 body {
@@ -62,23 +90,13 @@ html {
   scroll-margin-top: 5rem; /* adds space when scrolling to anchor */
 }
 
-.container {
-  max-width: 1200px;
-  margin-inline: auto; /* centers horizontally */
-  padding-inline: 2rem; /* space from screen edge */
-  width: 100%;
-  box-sizing: border-box;
-}
-@media (max-width: 768px) {
-  .container {
-    padding-inline: 2rem;
-  }
-}
+
 
 
 /* ========================================
    0 NAVBAR
 ======================================== */
+
 
 /* ===== Navbar default (top of page, transparent) ===== */
 .navbar.navbar-default {
@@ -89,22 +107,23 @@ html {
   box-shadow: none;
 }
 
-/* ===== Brand / site title "Tobias Joachim" Hier könnte ein Logo stehen ===== */
+/* ===== Brand "Tobias Joachim" (könnte ein Logo sein) ===== */
 .navbar.navbar-default .navbar-brand {
   color: var(--color-light) !important;  /* force offwhite at top */
   font-size: var(--fontsize-text);            /* bigger than links */
   font-weight: 700;           /* semi-bold */
   text-transform: none;       /* regular casing, not uppercase */
   transition: color 0.3s ease;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
-/* ===== Navbar Elemente links section titles ===== */
+/* ===== Navbar links zu den Sections ===== */
 .navbar.navbar-default .navbar-nav > li > a {
   color: var(--color-light) !important;
   font-size: var(--fontsize-text);
   font-weight: 400;
-  padding: 1.5rem;
   transition: color 0.3s ease;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
 
 /* ===== Hover effect for all links ===== */
@@ -124,8 +143,8 @@ html {
 /* ===== Navbar Get started button ===== */
 .navbar .navbar-right .btn-getstarted {
   padding: 0 1.2rem;
-  font-size: var(--fontsize-text);              /* text size */
-  font-weight: 400;              /* text size */
+  font-size: calc(var(--fontsize-text)*0.9);              /* text size */
+  font-weight: 600;              /* text size */
   line-height: 30px;               /* vertically center text */
   background-color: rgba(var(--color-light), 0.5); /* background */
   color: var(--color-light);         /* text */
@@ -134,11 +153,10 @@ html {
   display: inline-block;            /* ensures proper sizing */
   transition: all 0.3s ease;
 }
-/* Hover effect */
 .navbar .navbar-right .btn-getstarted:hover {
-  background-color: #FFFFFF25;
+  background-color: var(--color-light);
   border-color: var(--color-light);
-  color: var(--color-light);         /* text */
+  color: var(--color-dark);         /* text */
 }
 
 
@@ -152,86 +170,6 @@ html {
 .navbar.navbar-default.scrolled .navbar-nav > li > a,
 .navbar.navbar-default.scrolled .navbar-nav.navbar-right > li > a {
   color: var(--color-light) !important;
-}
-
-/* ===== Responsive adjustments ===== */
-@media (max-width: 768px) {
-
-  /* Hamburger / toggle button */
-  .navbar-toggle {
-    z-index: 1060; /* above overlay & menu */
-    border: 1px solid var(--color-light);
-    border-radius: 6px;
-    background: transparent; /* remove background */
-    padding: 0.5rem;
-    outline: none;      /* removes focus outline */
-  }
-  .navbar-toggle:hover {
-    background-color: #FFFFFF25 !important; /* dark overlay at 30% opacity */
-
-  }
-
-  /* Collapse menu fixed to viewport */
-  .navbar-collapse.collapse {
-    position: fixed;
-    top: 0;
-    right: -80vw; /* start off-screen */
-    width: 80vw;
-    height: 100vh;
-    background-color: var(--color-light);
-    z-index: 1050;
-    transition: right 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    padding-top: 4rem;
-    overflow-y: auto;
-  }
-
-  /* Open state */
-  .navbar-collapse.collapse.show,
-  .navbar-collapse.collapse.open {
-    right: 0;
-  }
-
-  /* Links in mobile menu */
-  .navbar-collapse.collapse .navbar-nav {
-    flex-direction: column;
-    text-align: right;
-    margin: 0;
-    padding: 0;
-  }
-
-  .navbar-collapse.collapse .navbar-nav > li > a {
-    padding: 1rem 2rem;
-    color: var(--color-dark) !important;
-    font-size: var(--fontsize-h3);
-  }
-
-  .navbar-collapse.collapse .navbar-nav > li > a:hover {
-    color: var(--color-accent);
-  }
-
-  /* Right side button in menu */
-  .navbar-collapse.collapse .navbar-right {
-    margin-top: 2rem;
-    padding-right: 2rem;
-  }
-
-  /* Dark overlay on left side */
-  .mobile-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 20vw;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.4);
-    z-index: 1040;
-  }
-
-  .mobile-overlay.active {
-    display: block;
-  }
 }
 
 /* X animation */
@@ -283,6 +221,22 @@ html {
   color: var(--color-dark);
 }
 
+.navbar-toggle.open,
+.navbar-toggle.collapsed,
+.navbar-toggle:focus,
+.navbar-toggle:active {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.navbar-toggle.open {
+  border: 1.5px solid var(--color-dark);  /* color of the box */
+  border-radius: 6px;                    /* optional rounded corners */
+  background-color: var(--color-light); /* optional background */
+}
+
+
 /* Language switcher */
 .language-switcher {
   display: flex !important;
@@ -307,7 +261,7 @@ html {
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  opacity: 0.6; /* inactive language slightly dimmed */
+  opacity: 0.5; /* inactive language slightly dimmed */
 }
 
 .language-switcher .lang-link.active {
@@ -326,6 +280,232 @@ html {
   vertical-align: middle; /* align with flags/text */
 }
 
+/* ===== Responsive adjustments ===== */
+@media (max-width: 768px) {
+  /* Collapse menu fixed to viewport */
+  .navbar-collapse.collapse {
+    position: fixed;
+    top: 0;
+    right: -80vw;
+    width: 80vw;
+    height: 100vh;           /* full viewport height */
+    background-color: var(--color-light);
+    z-index: 1050;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    padding: 0;              /* remove padding from this container */
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+
+  /* Wrapper to make menu full height with space-between */
+  .navbar-collapse.collapse .mobile-menu-wrapper {
+    flex: 1 1 auto;          /* fills the height of the parent */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 7rem 5rem 2rem 2rem; /* keep your top/right padding */
+    box-sizing: border-box;
+  }
+
+  /* Top links container */
+  .navbar-collapse.collapse .menu-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* right-aligned links */
+    gap: 2rem;
+    overflow-y: auto;  /* allows scrolling inside top links if needed */
+  }
+
+  /* Bottom actions container */
+  .navbar-collapse.collapse .menu-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+  }
+
+
+  /* Hamburger / toggle button */
+  .navbar-toggle {
+    z-index: 1060; /* above overlay & menu */
+    border: 1px solid var(--color-light);
+    border-radius: 6px;
+    background: transparent;
+    padding: 0.5rem;
+    outline: none;
+  }
+
+  .navbar-nav.navbar-right {
+    flex-direction: column; /* stack items vertically on mobile */
+    align-items: flex-end;
+  }
+
+  /* Give language switcher lower order (it goes to bottom) */
+  .navbar-nav.navbar-right .language-switcher {
+    order: 2;
+  }
+
+  /* Get started button comes above (higher order = earlier in column) */
+  .navbar-nav.navbar-right .btn-getstarted {
+    order: 1;
+  }
+
+  /* Open state */
+  .navbar-collapse.collapse.open {
+    right: 0;
+  }
+
+  /* Links in mobile menu */
+  .navbar-collapse.collapse .navbar-nav {
+    flex-direction: column;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar-collapse.collapse .navbar-nav > li > a {
+    padding: 1rem 0;
+    color: var(--color-dark) !important;
+    font-size: var(--fontsize-h3);
+  }
+
+  .navbar-collapse.collapse .navbar-nav > li > a:hover {
+    color: var(--color-accent);
+  }
+
+  /* Right side button in menu */
+  .navbar-collapse.collapse .navbar-right {
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 2rem;
+    gap: 1rem;
+  }
+
+  /* Dark overlay */
+  .mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;  /* cover entire page */
+    height: 100vh;
+    background-color: rgba(0,0,0,0.6); /* 60% dark */
+    z-index: 1040;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+
+  .mobile-overlay.active {
+    display: block;
+    opacity: 1;
+  }
+
+/* ===== Language Switcher und Get stsarted button im Dropdown Menü ==== */
+  .navbar-collapse.collapse .btn-getstarted {
+    border: 1.8px solid var(--color-dark);
+    font-size: calc(var(--fontsize-text)*1.4);
+    font-weight: 500;
+    background-color: transparent !important;
+    color: var(--color-dark) !important;
+    border-color: var(--color-dark) !important;
+    margin-bottom: 3rem;
+    padding: 0.3rem 1rem;
+    /* margin-bottom: 80rem; */
+  }
+  .navbar-collapse.collapse .btn-getstarted:hover {
+    border: 1.8px solid var(--color-dark);
+    background-color: var(--color-dark) !important;
+    color: var(--color-light) !important;
+  }
+
+  /* Language switcher separately if needed */
+  .navbar-collapse.collapse .language-switcher {
+    color: #000; /* e.g. softer gray */
+    font-size: 0.95rem;
+    padding-bottom: 3rem;
+    /* gap: 0; */
+  }
+  .navbar-collapse.collapse .language-switcher i {
+    font-size: 5rem;
+  }
+
+  /* Language switcher in mobile menu */
+  .navbar-collapse.collapse .language-switcher .lang-link {
+    color: var(--color-dark) !important; /* dark text for visibility */
+    text-decoration: none;
+    font-weight: 400;
+    font-size: var(--fontsize-text);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    /* opacity: 0.4; /* inactive language slightly dimmed */ */
+
+  }
+  .navbar-collapse.collapse .language-switcher .separator {
+    color: var(--color-light) !important;
+  }
+}
+
+
+
+
+
+
+
+/* ========================================
+   0 For all sections except hero
+======================================== */
+
+
+.container {
+  max-width: 1200px;
+  margin-inline: auto; /* zentriert die gesamte Section */
+  padding-left: clamp(1rem, 10vw, 5rem);  /* optional: linker Rand */
+  padding-right: clamp(1rem, 10vw, 5rem);
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  .container {
+    padding-inline: 3rem;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+
+
+
+.about-section {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  /* about section hat eigene weite von 900 die den container verändern */
+}
+.portfolio-section {
+  background-color: var(--color-light);
+}
+.process-section {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+.contact-section {
+  background-color: var(--color-light);
+  padding-bottom: 15rem;
+}
+
+#contact .container {
+  display: flex;
+  flex-direction: column;    /* stack items vertically */
+  justify-content: center;   /* vertical centering if needed */
+  align-items: center;       /* horizontal centering */
+  gap: 0.7rem;                 /* optional space between items */
+}
+
+
 
 
 /* ========================================
@@ -335,8 +515,8 @@ html {
 .hero-section {
   position: relative;
   width: 100%;
-  height: 50vh; /* half of viewport height */
-  background-image: url('/images/hero.jpg');
+  height: 70vh; /* half of viewport height */
+  background-image: url('/images/IMG_5133_16zu9_klein.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -344,7 +524,7 @@ html {
 .hero-overlay {  /* layer on top of background*/
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* optional dark overlay*/
+  background-color: rgba(0, 0, 0, 0.2); /* optional dark overlay*/
   display: flex;
   align-items: center; /* vertical centering */
   justify-content: flex-start; /* horizontal centering */
@@ -357,30 +537,30 @@ html {
   }
 }
 
+
 .hero-content {
   color: var(--color-light);
-  margin: 0 auto;
-  padding-left: clamp(1rem, 10vw, 8rem);
-  padding-right: clamp(1rem, 10vw, 8rem);
-  max-width: 1200px;
+  max-width: 50ch; /* Lesebreite des Textes */
+  /* Kein margin auto, damit links bündig mit Container */
 }
-@media (min-width: 1024px) {
-  .hero-content {
-    max-width: 50%;
-    padding-right: 0; /* right side stays open */
-  }
-}
+
+
+
 
 .hero-content h1 {
   margin-bottom: 0rem;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
 .hero-content h3 {
   margin-bottom: 1.2rem;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
 .hero-content p {
   margin-bottom: 5rem;
+  font-size: calc(var(--fontsize-text)*1.4);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
 
@@ -389,20 +569,13 @@ html {
    2 About Section
 ======================================== */
 
-.about-section {
-  background-color: var(--color-dark);  /* DARK GREY DARK GREY DARK GREY DARK GREY DARK GREY DARK GREY DARK GREY DARK GREY */
-  width: 100%;
-  padding-top: 6rem; /* top/bottom 4rem, left/right 2rem */
-  padding-bottom: 4rem;
-}
-
 .about-content {
   display: flex;
   align-items: flex-start; /* keep top alignment */
-  gap: 3rem;               /* space between image and text */
-  max-width: 900px;       /* keep content width limited */
+  gap: 5rem;               /* space between image and text */
+  max-width: 900px;       /* keep content width limited, nicht ideal aber funktioniert */
   margin: 0 auto;          /* center the content block horizontally */
-  padding: 0rem 3rem;         /* space from edges of screen */
+  /*padding: 0rem 3rem;         /* space from edges of screen */
 }
 
 .about-image img {
@@ -418,29 +591,22 @@ html {
   color: var(--color-light);
   line-height: 1.7;
   font-size: var(--fontsize-text);
+  text-align: left;
 }
 
 /* ===== Responsive adjustments ===== */
 @media (max-width: 768px) {
-  .about-section {
-    padding-top: 2rem; /* top/bottom 4rem, left/right 2rem */
-    padding-bottom: 0rem;
-  }
-
   .about-content {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 0rem 1.5rem;
+    /* padding: 0rem 1.5rem; */
   }
-
   .about-image img {
     width: 100%; /* smaller on mobile */
   }
-
   .about-text {
-    text-align: left;
-    padding: 1em
+    padding: 0.8em; /* etwas eingerückt damit es schöner aussieht mit dem Bild*/
   }
 
 }
@@ -449,12 +615,7 @@ html {
    3 Portfolio Section
 ======================================== */
 
-.portfolio-section {
-  background-color: var(--color-light);
-  width: 100%;
-  padding: 2rem 0; /* same vertical spacing as about-section */
-  padding-bottom: 6rem;
-}
+
 
 /* ===== Songliste ===== */
 /* Rahmen um gesamte Liste */
@@ -462,35 +623,26 @@ html {
   list-style: none;
   padding: 0;
   margin: 0 auto;
-  border: 2px solid black;
-  border-radius: 12px;
+  margin-top: 5rem;   /* Abstand nach oben */
+  margin-bottom: 5rem; /* Abstand nach unten */
+  border-radius: 10px;
   overflow: hidden;
-  background-color: #fff;
-  max-width: 400px;
+  background-color: var(--color-dark);
+  max-width: 450px;
   justify-content: center;
 }
 
-/* Einzelne Songs */
+/* Ein Song item ist eine Zeile */
 .song-item {
   display: flex;
   align-items: center;
   padding: 0.3rem;
 }
-
+/* Separatoren standardmäßig anzeigen */
 .song-separator {
-  border: none;                 /* Standard-HR-Rahmen entfernen */
-  border-top: 1px solid #ccc;   /* graue Linie */
-  margin: 0 1rem;               /* Abstand links und rechts – Linie wird kürzer */
-}
-
-/* ===== Cover ausgeblendet ===== */
-.song-cover {
-  display: none;
-}
-
-/* Artists ausblenden */
-.song-info .artist {
-  display: none;
+  border: none;
+  border-top: 1px solid var(--color-light);
+  margin: 0 1rem;
 }
 
 /* ===== Songplayer (Playbutton links) ===== */
@@ -514,14 +666,15 @@ html {
   margin: 0;
   font-size: var(--fontsize-text);
   font-weight: 600;
-  color: var(--color-dark);
+  color: var(--color-light);
 }
 
 /* Genres */
 .song-info p {
   margin: 0.2rem 0 0 0;
-  color: var(--color-lightdark);
+  color: var(--color-light);
   font-size: var(--fontsize-small);
+  font-weight: 300;
 }
 
 /* ===== Fortschrittsring & Button ===== */
@@ -541,15 +694,15 @@ html {
   pointer-events: none;
 }
 
-/* Hintergrund-Kreis */
+/* Hintergrund vom Außen-Kreis */
 .jp-progress-bg {
   fill: none;
-  stroke: var(--color-dark);  /* dunkler Hintergrund-Kreis */
+  stroke: var(--color-light);  /* dunkler Hintergrund-Kreis */
   opacity: 0.3;
 }
 
-/* Fortschrittsring */
-.jp-progress-ring {
+/* Fortschrittsring vom Außen-Kreis */
+.jp-progress-ring  {
   fill: none;
   stroke: var(--color-accent);  /* Akzentfarbe (Grün) */
   stroke-dasharray: 138;
@@ -566,8 +719,8 @@ html {
   width: 36px;
   height: 36px;
   border: none;
-  background: var(--color-dark); /* heller Button */
-  color: var(--color-light);       /* dunkles Icon (z. B. Pfeil) */
+  background: var(--color-light); /* solid Kries umd das Icon */
+  color: var(--color-dark);       /* Icon in der Mitee */
   border-radius: 50%;
   font-size: 1.6rem;
   cursor: pointer;
@@ -578,38 +731,43 @@ html {
   color: var(--color-light);
 }
 
+.play-btn i {
+  font-size: 2.2rem;
+  pointer-events: none; /* makes clicks register on the button, not the icon */
+}
 
+
+/* Stream Button */
+.portfolio-btn-wrapper {
+  text-align: center;
+  /* margin-top: 0rem;  */
+  /* margin-bottom: 5rem;  */
+}
 /* ========================================
    4 Process Section
 ======================================== */
 
-/* ===== Process Section ===== */
-.process-section {
-  background-color: var(--color-dark); /* optional background */
-  color: var(--color-light);
-  padding: 2em 0; /* Abstand oben und unten */
 
-}
-
-.process-section .container {
-  max-width: 650px;
-  padding-inline: 5rem;
-  /* width: 80%; */
-}
-@media (max-width: 768px) {
-  .process-section .container {
-    padding-inline: 4rem;
-  }
-}
 
 /* Padding nach section title */
 .process-section .section-title {
-  margin-bottom: 4rem;
+  margin-bottom: 6rem;
+}
+
+/* Each step container */
+.steps-container {
+  display: flex;
+  flex-direction: column;  /* vertical stack */
+  align-items: center;     /* center children horizontally */
+  margin: 0 auto;          /* center container itself */
+  gap: 2rem;
+  max-width: 600px;
+  margin-bottom: 5rem;
 }
 
 /* Each step container */
 .process-step {
-  margin-bottom: 4rem; /* spacing between steps */
+  margin-bottom: 2rem; /* spacing between steps */
 }
 
 /* Icons */
@@ -653,14 +811,57 @@ html {
   line-height: 1.6;
   margin: 0;
   padding-top: 1rem;
-  padding-left: 0.4rem; /* optional, aligns text slightly right of icon */
+  padding-left: 0.7rem; /* optional, aligns text slightly right of icon */
 }
 
-/* Optional: special styling for final note */
-.process-step.final-note .step-text {
-  font-weight: 600;
-  padding-left: 0.4rem; /* optional, aligns text slightly right of icon */
+/* ===== Final Note below the 4 steps===== */
+/* Final note container */
+.process-step.final-note {
+  display: flex;
+  flex-direction: column;   /* stack title and content vertically */
+  align-items: flex-start;  /* left-aligned */
+  gap: 1rem;                /* space between title and content */
+  max-width: 600px;
+  margin: 0 auto;
 }
+
+/* Title with inline icon */
+.final-note .step-title {
+  font-size: var(--fontsize-h3);
+  font-weight: 600;
+  display: flex;
+  align-items: center;      /* icon vertically centered with text */
+  gap: 0.5rem;              /* space between icon and title */
+}
+
+/* Optional: icon in title slightly bigger */
+.final-note .step-title i {
+  font-size: 1.5em;
+  line-height: 1;
+}
+
+/* Content below title */
+.final-note-content {
+  display: flex;            /* icon + text horizontal layout */
+  align-items: flex-start;  /* top-aligned */
+  gap: 1rem;
+  width: 100%;
+}
+
+.final-note-content i {
+  font-size: 2em;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.final-note-content p {
+  margin: 0;
+  font-weight: 600;
+  font-size: calc(var(--fontsize-text)*1.2);
+  line-height: 1.3;
+}
+
+
 
 /* ===== Responsive adjustments ===== */
 @media (max-width: 768px) {
@@ -678,11 +879,7 @@ html {
    5 Contact or End Section
 ======================================== */
 
-.contact-section {
-  background-color: var(--color-light);
-  width: 100%;
-  padding: 4rem 0; /* same vertical spacing as about-section */
-}
+
 
 .section-title i {
  font-size: 1em;        /* match surrounding text size */
@@ -690,16 +887,7 @@ html {
  margin-left: 0.3rem;    /* add a little spacing */
 }
 
-#contact .container {
-  display: flex;
-  flex-direction: column;    /* stack items vertically */
-  justify-content: center;   /* vertical centering if needed */
-  align-items: center;       /* horizontal centering */
-  gap: 1rem;                 /* optional space between items */
-  padding: 2rem 2rem;
-  margin-bottom: 15rem; /* space below the button */
 
-}
 
 .contact-content h2 {
   font-size: var(--fontsize-h2);
@@ -713,12 +901,13 @@ html {
   margin-bottom: 2rem;
 }
 
+/* Grundeinstellung für Buttons der Klasse btn-getstarted also zum Beispiel der button am Ende der Seite */
 .btn-getstarted {
   background-color: var(--color-dark);      /* Hintergrund */
   border: 2px solid var(--color-dark);      /* Rahmen */
   color: var(--color-light);                /* Text */
   padding: 1rem 2rem;                       /* adjust size */
-  border-radius: 10px;                      /* rounded */
+  border-radius: 7px;                      /* rounded */
   font-weight: 600;
   font-size: 2rem; /* controls text size */
   cursor: pointer;
@@ -726,33 +915,49 @@ html {
   text-decoration: none;
 }
 .btn-getstarted:hover {
-  background-color: var(--color-lightdark);       /* Hintergrund */
-  border-color: var(--color-lightdark);           /* Rahmen */
-  color: var(--color-light);                 /* Text */
+  background-color: var(--color-light);       /* Hintergrund */
+  border-color: var(--color-dark);           /* Rahmen */
+  color: var(--color-dark);                 /* Text */
   text-decoration: none;
 }
 
 
 
-
-
-/* === Hero Button (muss hier stehen sonst funktioniert es nicht) === */
+/* === Hero Button "Work with me" (muss hier stehen sonst funktioniert es nicht) === */
 .hero-btn {
-  background-color: var(--color-light);
-  border: 1px solid var(--color-dark);
-  color: var(--color-dark);
-  font-size: var(--fontsize-h);
-  padding: 1rem 1.2rem;
+  background-color: transparent;
+  border: 2px solid var(--color-light);
+  color: var(--color-light);
+  font-size: calc(var(--fontsize-text)*1.4);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  /* padding: 1rem 1.2rem; */
 }
 .hero-btn:hover {
-  background-color: #FFFFFFBB;
-  border: 1px solid var(--color-lightdark);
+  /* background-color: var(--color-light); */
+  color(var(--color-light) alpha(0.3))
+  border: 2px solid var(--color-light);
   color: var(--color-dark);
-
 }
 
 
-/* Get Started / Tally Page embed fullscreen */
+/* Portfolio Button "Stream" */
+.portfolio-btn {
+  background-color: var(--color-light);  /* eigene Farbe */
+  border: 2px solid var(--color-dark);
+  color: var(--color-dark);
+  font-size: 1.8rem;      /* Größe anpassen */
+  padding: 1rem 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.portfolio-btn:hover {
+  background-color: var(--color-dark);
+  border-color: var(--color-dark);
+  color: var(--color-light);
+}
+
+
+/* Get Started Page / Tally Page */
 .getstarted-embed {
   position: relative;
   width: 100%;
@@ -781,8 +986,8 @@ html {
 .tally-wrapper iframe {
   width: 100%;
   height: 600px;
-  border: 2px dashed red; /* demo border */
-  border-radius: 8px;
+  /* border: 2px dashed red; */
+  /* border-radius: 8px; */
 }
 
 /* ===== Responsive adjustments ===== */
@@ -805,7 +1010,7 @@ html {
 
 /* .container {  outline: 2px dashed red; }
 
-.getstarted-section iframe {
+/* .getstarted-section iframe {
   border: 2px dashed red;
 } */
 
